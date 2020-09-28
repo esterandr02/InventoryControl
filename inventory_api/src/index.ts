@@ -1,6 +1,8 @@
 import 'express-async-errors';
 import express from 'express';
 
+import './injections';
+
 import routes from './routes';
 
 const app = express();
