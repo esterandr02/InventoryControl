@@ -12,7 +12,13 @@ export default class ItemRepository implements ItemRepositoryDTO {
         this.ormRepository = getRepository(Item);
     }
 
-    public async create({ item, quantity, value }: Request): Promise<Item> {}
+    public async create({ item, quantity, value }: Request): Promise<Item> {
+        const newItem = this.ormRepository.create({ item, quantity, value });
+
+        await this.ormRepository.save(newItem);
+
+        return newItem;
+    }
 
     public async list(): Promise<Item[]> {}
 
