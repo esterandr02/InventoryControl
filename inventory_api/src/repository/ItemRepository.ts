@@ -1,20 +1,22 @@
 import { getRepository, Repository } from 'typeorm';
 
-//import Item from '../entities/Item';
+import Item from '../entities/Item';
 
-//import ItemRepositoryDTO from '../dto/repositories/ItemRepositoryDTO';
+import ItemRepositoryDTO from '../dto/repositories/ItemRepositoryDTO';
 import Request from '../dto/Request';
 
 export default class ItemRepository implements ItemRepositoryDTO {
-    //private ormRepository: Repository<Item>;
+    private ormRepository: Repository<Item>;
 
-    constructor() {}
+    constructor() {
+        this.ormRepository = getRepository(Item);
+    }
 
-    public async create({ item, quantity, value }: Request): Promise<void> {}
+    public async create({ item, quantity, value }: Request): Promise<Item> {}
 
-    public async list(): Promise<void> {}
+    public async list(): Promise<Item[]> {}
 
-    public async update(): Promise<void> {}
+    public async update({ item, quantity, value }: Request): Promise<Item> {}
 
     public async remove(): Promise<void> {}
 }
