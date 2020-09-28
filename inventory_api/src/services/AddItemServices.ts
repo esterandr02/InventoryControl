@@ -13,6 +13,12 @@ export default class AddItemService {
     ) {}
 
     public async execute({ item, quantity, value }: Request): Promise<Item> {
-        return { item, quantity, value };
+        const newItem = await this.itemRepository.create({
+            item,
+            quantity,
+            value,
+        });
+
+        return newItem;
     }
 }
