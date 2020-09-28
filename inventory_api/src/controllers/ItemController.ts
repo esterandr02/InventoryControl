@@ -1,6 +1,8 @@
+import { container } from 'tsyringe';
+
 import { Request, Response } from 'express';
 
-import AddItemService from '../services/AddItemService';
+import AddItemService from '../services/AddItemServices';
 
 export default class AddItemController {
     public async create(
@@ -10,7 +12,7 @@ export default class AddItemController {
         try {
             const { item, quantity, value } = request.body;
 
-            const addItemService = new AddItemService();
+            const addItemService = container.resolve(AddItemService);
 
             const newItem = addItemService.execute({ item, quantity, value });
 
