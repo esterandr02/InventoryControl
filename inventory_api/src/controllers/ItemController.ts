@@ -3,6 +3,7 @@ import { container } from 'tsyringe';
 import { Request, Response } from 'express';
 
 import ListItemsService from '../services/ListItemsService';
+import AddItemService from '../services/AddItemService';
 
 export default class AddItemController {
     public async create(
@@ -44,6 +45,8 @@ export default class AddItemController {
     ): Promise<Response> {
         try {
             const { item_id } = request.params;
+
+            const updatedItem = 
 
             return response.json(item_id);
         } catch (err) {
