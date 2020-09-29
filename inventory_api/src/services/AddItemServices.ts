@@ -5,6 +5,8 @@ import ItemRepositoryDTO from '../dto/repositories/ItemRepositoryDTO';
 
 import Item from '../entities/Item';
 
+import NewError from '../errors/NewError';
+
 @injectable()
 export default class AddItemService {
     constructor(
@@ -16,6 +18,13 @@ export default class AddItemService {
         const isItemExists = await this.itemRepository.checkItemExists(item);
 
         if (!isItemExists) {
+            if (quantity < 0) {
+                throw new NewError(
+                    'Cannot add a new item with negative quantity',
+                    400
+                );
+            }
+
             return this.itemRepository.create({
                 item,
                 quantity,
@@ -23,6 +32,12 @@ export default class AddItemService {
             });
         }
 
-        return isItemExists;
+        if (isItemExists.quantity === 0 && quantity < 0) {
+            throw new NewError('Cannot reduce quantity of 0', 400);
+        }
+
+        isItemExists.quantity += quantity;
+
+        return this.itemRepository.save(isItemExists);
     }
 }
