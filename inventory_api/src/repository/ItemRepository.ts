@@ -20,8 +20,6 @@ export default class ItemRepository implements ItemRepositoryDTO {
         return newItem;
     }
 
-    public async list(): Promise<Item[]> {}
-
     public async update({ item, quantity, value }: Request): Promise<Item> {}
 
     public async remove(): Promise<void> {}
