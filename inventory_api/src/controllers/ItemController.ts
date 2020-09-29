@@ -2,7 +2,7 @@ import { container } from 'tsyringe';
 
 import { Request, Response } from 'express';
 
-import AddItemService from '../services/AddItemServices';
+import ListItemsService from '../services/ListItemsService';
 
 export default class AddItemController {
     public async create(
@@ -28,9 +28,11 @@ export default class AddItemController {
 
     public async list(request: Request, response: Response): Promise<Response> {
         try {
-            const items: void[] = [];
+            const listItems = container.resolve(ListItemsService);
 
-            return response.json(items);
+            const allItems = await listItems.execute();
+
+            return response.json(allItems);
         } catch (err) {
             return response.json({ error: err.message });
         }
