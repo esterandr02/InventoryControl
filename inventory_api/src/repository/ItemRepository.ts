@@ -20,9 +20,9 @@ export default class ItemRepository implements ItemRepositoryDTO {
         return newItem;
     }
 
-    public async update({ item, quantity, value }: Request): Promise<Item> {}
-
-    public async remove(): Promise<void> {}
+    public async remove(id: string): Promise<void> {
+        await this.ormRepository.delete(id);
+    }
 
     public async save(item: Item): Promise<Item> {
         return this.ormRepository.save(item);
