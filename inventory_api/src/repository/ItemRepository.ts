@@ -26,6 +26,10 @@ export default class ItemRepository implements ItemRepositoryDTO {
 
     public async remove(): Promise<void> {}
 
+    public async save(item: Item): Promise<Item> {
+        return this.ormRepository.save(item);
+    }
+
     public async checkItemExists(item: string): Promise<Item | undefined> {
         return this.ormRepository.findOne({
             where: { item },

@@ -10,5 +10,7 @@ export default interface ItemRepositoryDTO {
 
     remove(): Promise<void>;
 
+    save(item: Item): Promise<Item>;
+
     checkItemExists(item_name: string): Promise<Item | undefined>;
 }
