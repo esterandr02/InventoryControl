@@ -8,7 +8,7 @@ const itemController = new ItemController();
 
 routes.post('/inventory', itemController.create);
 routes.get('/inventory', itemController.list);
-routes.put('/inventory/:id', itemController.update);
-routes.delete('/inventory/:id', itemController.remove);
+routes.put('/inventory/:item_id', itemController.update);
+routes.delete('/inventory/:item_id', itemController.remove);
 
 export default routes;
