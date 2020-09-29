@@ -37,4 +37,10 @@ export default class ItemRepository implements ItemRepositoryDTO {
             where: { item },
         });
     }
+
+    public async findById(id: string): Promise<Item | undefined> {
+        return this.ormRepository.findOne({
+            where: { id },
+        });
+    }
 }

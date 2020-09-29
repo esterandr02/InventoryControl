@@ -14,5 +14,5 @@ export default interface ItemRepositoryDTO {
 
     findByName(item_name: string): Promise<Item | undefined>;
 
-    findById(item_name: string): Promise<Item | undefined>;
+    findById(id: string): Promise<Item | undefined>;
 }
