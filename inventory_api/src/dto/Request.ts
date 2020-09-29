@@ -1,5 +1,5 @@
 export default interface Request {
-    id: string | undefined;
+    id: string;
     item: string;
     quantity: number;
     value: number;
