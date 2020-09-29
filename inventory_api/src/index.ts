@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import 'express-async-errors';
 import express from 'express';
 
+import './entities/typeorm';
 import './injections';
 
 import routes from './routes';
