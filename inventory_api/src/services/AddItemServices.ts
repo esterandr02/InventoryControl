@@ -13,12 +13,16 @@ export default class AddItemService {
     ) {}
 
     public async execute({ item, quantity, value }: Request): Promise<Item> {
-        const newItem = await this.itemRepository.create({
-            item,
-            quantity,
-            value,
-        });
+        const isItemExists = await this.itemRepository.checkItemExists(item);
 
-        return newItem;
+        if (!isItemExists) {
+            return this.itemRepository.create({
+                item,
+                quantity,
+                value,
+            });
+        }
+
+        return isItemExists;
     }
 }
