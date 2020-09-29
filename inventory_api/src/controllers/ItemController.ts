@@ -49,7 +49,7 @@ export default class AddItemController {
 
             const updateItem = container.resolve(UpdateItemService);
 
-            const updated = updateItem.execute(item_id);
+            const updated = await updateItem.execute(item_id);
 
             return response.json(updated);
         } catch (err) {
