@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 
 import ListItemsService from '../services/ListItemsService';
 import AddItemService from '../services/AddItemService';
+import UpdateItemService from '../services/UpdateItemService';
 
 export default class AddItemController {
     public async create(
@@ -46,9 +47,11 @@ export default class AddItemController {
         try {
             const { item_id } = request.params;
 
-            const updatedItem = 
+            const updateItem = container.resolve(UpdateItemService);
 
-            return response.json(item_id);
+            const updated = updateItem.execute(item_id);
+
+            return response.json(updated);
         } catch (err) {
             return response.json({ error: err.message });
         }
