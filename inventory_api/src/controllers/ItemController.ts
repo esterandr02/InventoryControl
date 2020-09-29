@@ -45,11 +45,17 @@ export default class AddItemController {
         response: Response
     ): Promise<Response> {
         try {
-            const { item_id } = request.params;
+            const { id } = request.params;
+            const { item, quantity, value } = request.body;
 
             const updateItem = container.resolve(UpdateItemService);
 
-            const updated = await updateItem.execute(item_id);
+            const updated = await updateItem.execute({
+                id,
+                item,
+                quantity,
+                value,
+            });
 
             return response.json(updated);
         } catch (err) {
