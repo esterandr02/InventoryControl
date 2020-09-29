@@ -5,7 +5,7 @@ import ItemRepositoryDTO from '../dto/repositories/ItemRepositoryDTO';
 import Item from '../entities/Item';
 
 @injectable()
-export default class AddItemService {
+export default class ListItemService {
     constructor(
         @inject('ItemRepository')
         private itemRepository: ItemRepositoryDTO
