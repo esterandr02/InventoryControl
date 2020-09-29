@@ -5,6 +5,7 @@ import { Request, Response } from 'express';
 import ListItemsService from '../services/ListItemsService';
 import AddItemService from '../services/AddItemService';
 import UpdateItemService from '../services/UpdateItemService';
+import RemoveItemService from '../services/RemoveItemService';
 
 export default class AddItemController {
     public async create(
@@ -36,7 +37,7 @@ export default class AddItemController {
 
             return response.json(allItems);
         } catch (err) {
-            return response.json({ error: err.message });
+            return response.status(400).json({ error: err.message });
         }
     }
 
@@ -59,7 +60,7 @@ export default class AddItemController {
 
             return response.json(updated);
         } catch (err) {
-            return response.json({ error: err.message });
+            return response.status(400).json({ error: err.message });
         }
     }
 
@@ -68,11 +69,18 @@ export default class AddItemController {
         response: Response
     ): Promise<Response> {
         try {
-            const { item_id } = request.params;
+            const { id } = request.params;
 
-            return response.json(item_id);
+            const removeItem = container.resolve(RemoveItemService);
+
+            await removeItem.execute(id);
+
+            return response
+                .status(200)
+                .json()
+                .send('Item removed successfully.');
         } catch (err) {
-            return response.json({ error: err.message });
+            return response.status(400).json({ error: err.message });
         }
     }
 }
