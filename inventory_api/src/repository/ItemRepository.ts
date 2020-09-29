@@ -30,6 +30,10 @@ export default class ItemRepository implements ItemRepositoryDTO {
         return this.ormRepository.save(item);
     }
 
+    public async findAll(): Promise<Item[]> {
+        return this.ormRepository.find();
+    }
+
     public async checkItemExists(item: string): Promise<Item | undefined> {
         return this.ormRepository.findOne({
             where: { item },
