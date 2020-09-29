@@ -25,4 +25,10 @@ export default class ItemRepository implements ItemRepositoryDTO {
     public async update({ item, quantity, value }: Request): Promise<Item> {}
 
     public async remove(): Promise<void> {}
+
+    public async checkItemExists(item: string): Promise<Item | undefined> {
+        return this.ormRepository.findOne({
+            where: { item },
+        });
+    }
 }
