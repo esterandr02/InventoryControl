@@ -75,10 +75,7 @@ export default class AddItemController {
 
             await removeItem.execute(id);
 
-            return response
-                .status(200)
-                .json()
-                .send('Item removed successfully.');
+            return response.status(200).json();
         } catch (err) {
             return response.status(400).json({ error: err.message });
         }
