@@ -1,14 +1,20 @@
 import { inject, injectable } from 'tsyringe';
 
 import ItemRepositoryDTO from '../dto/repositories/ItemRepositoryDTO';
-import Request from '../dto/Request';
 
 import Item from '../entities/Item';
 
 import NewError from '../errors/NewError';
 
+interface UpdateRequest {
+    id: string;
+    item: string;
+    quantity: number;
+    value: number;
+}
+
 @injectable()
-export default class AddItemService {
+export default class UpdateItemService {
     constructor(
         @inject('ItemRepository')
         private itemRepository: ItemRepositoryDTO
@@ -19,7 +25,7 @@ export default class AddItemService {
         item,
         quantity,
         value,
-    }: Request): Promise<Item> {
+    }: UpdateRequest): Promise<Item> {
         const findItem = await this.itemRepository.findById(id);
 
         if (!findItem) {
