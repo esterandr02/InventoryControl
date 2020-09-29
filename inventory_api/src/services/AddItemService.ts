@@ -15,7 +15,7 @@ export default class AddItemService {
     ) {}
 
     public async execute({ item, quantity, value }: Request): Promise<Item> {
-        const isItemExists = await this.itemRepository.checkItemExists(item);
+        const isItemExists = await this.itemRepository.findByName(item);
 
         if (!isItemExists) {
             if (quantity < 0) {
