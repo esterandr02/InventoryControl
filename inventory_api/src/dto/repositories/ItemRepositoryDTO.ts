@@ -12,5 +12,7 @@ export default interface ItemRepositoryDTO {
 
     findAll(): Promise<Item[]>;
 
-    checkItemExists(item_name: string): Promise<Item | undefined>;
+    findByName(item_name: string): Promise<Item | undefined>;
+
+    findById(item_name: string): Promise<Item | undefined>;
 }

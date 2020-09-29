@@ -32,7 +32,7 @@ export default class ItemRepository implements ItemRepositoryDTO {
         return this.ormRepository.find();
     }
 
-    public async checkItemExists(item: string): Promise<Item | undefined> {
+    public async findByName(item: string): Promise<Item | undefined> {
         return this.ormRepository.findOne({
             where: { item },
         });
