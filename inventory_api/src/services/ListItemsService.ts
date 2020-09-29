@@ -1,11 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
-import Request from '../dto/Request';
 import ItemRepositoryDTO from '../dto/repositories/ItemRepositoryDTO';
 
 import Item from '../entities/Item';
-
-import NewError from '../errors/NewError';
 
 @injectable()
 export default class AddItemService {
