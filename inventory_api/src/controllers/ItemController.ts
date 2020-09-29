@@ -14,7 +14,11 @@ export default class AddItemController {
 
             const addItemService = container.resolve(AddItemService);
 
-            const newItem = addItemService.execute({ item, quantity, value });
+            const newItem = await addItemService.execute({
+                item,
+                quantity,
+                value,
+            });
 
             return response.json(newItem);
         } catch (err) {
