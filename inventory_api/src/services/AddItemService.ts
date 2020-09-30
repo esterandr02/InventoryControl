@@ -17,27 +17,17 @@ export default class AddItemService {
     public async execute({ item, quantity, value }: Request): Promise<Item> {
         const isItemExists = await this.itemRepository.findByName(item);
 
-        if (!isItemExists) {
-            if (quantity < 0) {
-                throw new NewError(
-                    'Cannot add a new item with negative quantity',
-                    400
-                );
-            }
-
-            return this.itemRepository.create({
-                item,
-                quantity,
-                value,
-            });
+        if (isItemExists) {
+            throw new NewError(
+                'This item already exists. If you want to update it go to Update route',
+                400
+            );
         }
 
-        if (isItemExists.quantity === 0 && quantity < 0) {
-            throw new NewError('Cannot reduce quantity of 0', 400);
-        }
-
-        isItemExists.quantity += quantity;
-
-        return this.itemRepository.save(isItemExists);
+        return this.itemRepository.create({
+            item,
+            quantity,
+            value,
+        });
     }
 }
