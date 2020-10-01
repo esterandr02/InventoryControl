@@ -43,6 +43,8 @@
 
 ## :warning: Prerequisites
 
+- create a .env file and put the informations .env.example requires on it
+
 -   [Git](https://git-scm.com)
 -   [Node.js v12.18.1](https://nodejs.org/dist/v12.18.1/node-v12.18.1-linux-x64.tar.xz) - LTS version
 -   [Yarn v1.13](https://yarnpkg.com/getting-started) - package manager
