@@ -25,8 +25,8 @@
 
 ## How works
 
--   Giving complaints coordinates that will find some address where you want to complain
--   Register complaints whistleblower on database
+-   Use an http client to explore the funcionalidties
+-   Acces __http://localhots:3333/inventory__ and explore __CRUD__ methods
 
 ## :rocket: Technologies
 
@@ -43,14 +43,12 @@
 
 ## :warning: Prerequisites
 
-- create a .env file and put the informations .env.example requires on it
-
 -   [Git](https://git-scm.com)
 -   [Node.js v12.18.1](https://nodejs.org/dist/v12.18.1/node-v12.18.1-linux-x64.tar.xz) - LTS version
 -   [Yarn v1.13](https://yarnpkg.com/getting-started) - package manager
 -   [Docker with postgres database](https://hub.docker.com/_/postgres) - follow the instructions to create a container that will contains the image of postgres.
--   [Account on Mapquest API](https://reactjs.org/)
--   Don't forget to put your consumer Mapquest key on _.env.example_ file
+
+- create a .env file and put the informations .env.example requires on it
 
 ## :information_source: Getting Started
 
