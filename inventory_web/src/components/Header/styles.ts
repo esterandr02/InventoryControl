@@ -13,6 +13,9 @@ export const Container = styled.div`
 
         width: 1120px;
 
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+
         nav {
             a {
                 color: #fff;
