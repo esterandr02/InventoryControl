@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="logo" src="inventory_api/src/assets/check-list.png"/>
+  <img alt="logo" src="inventory_api/src/assets/inventory.png" heigh="200px" width="200px"/>
 </p>
 
 <h1 align="center">
