@@ -1,5 +1,17 @@
 import React from 'react';
 
-const Inventory: React.FC = () => <h1>Inventory</h1>;
+import Header from '../../components/Header';
+
+import { Container } from './styles';
+
+const Inventory: React.FC = () => {
+    return (
+        <>
+            <Container>
+                <Header />
+            </Container>
+        </>
+    );
+};
 
 export default Inventory;
