@@ -7,7 +7,7 @@ import Inventory from '../pages/Inventory';
 const Routes: React.FC = () => (
     <Switch>
         <Route path="/" exact component={Dashboard}></Route>
-        <Route path="/inventory" component={Inventory}></Route>
+        <Route path="/new" component={Inventory}></Route>
     </Switch>
 );
 
